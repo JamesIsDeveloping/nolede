@@ -53,4 +53,4 @@ curl -X POST http://localhost:3000/api/runs/trigger
 
 ## License
 
-MIT
+Nolede Noncommercial Copyleft License — non-commercial use only, derivatives must use the same terms. See [LICENSE](LICENSE).
