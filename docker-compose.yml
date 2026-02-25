@@ -2,10 +2,11 @@ services:
   app:
     build: .
     ports:
-      - "127.0.0.1:3000:3000"  # localhost only — nginx proxies from public internet
+      - "127.0.0.1:3050:3050"  # localhost only — nginx proxies from public internet
     env_file: .env
     environment:
       NODE_ENV: production
+      PORT: 3050
       # Overrides any MONGODB_URI in .env — connects to the local mongo service
       MONGODB_URI: mongodb://mongo:27017/nolede
     depends_on:
