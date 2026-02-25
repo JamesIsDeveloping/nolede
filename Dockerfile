@@ -32,6 +32,6 @@ COPY --from=builder /app/client/dist ./client/dist
 RUN mkdir -p logs
 
 ENV NODE_ENV=production
-EXPOSE 3000
+EXPOSE 3050
 
 CMD ["node", "server/dist/server.js"]
