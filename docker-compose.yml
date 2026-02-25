@@ -1,0 +1,30 @@
+services:
+  app:
+    build: .
+    ports:
+      - "127.0.0.1:3000:3000"  # localhost only — nginx proxies from public internet
+    env_file: .env
+    environment:
+      NODE_ENV: production
+      # Overrides any MONGODB_URI in .env — connects to the local mongo service
+      MONGODB_URI: mongodb://mongo:27017/nolede
+    depends_on:
+      mongo:
+        condition: service_healthy
+    restart: unless-stopped
+
+  mongo:
+    image: mongo:7
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    restart: unless-stopped
+    # Mongo is not exposed to the host — only reachable inside the Docker network
+
+volumes:
+  mongo_data:

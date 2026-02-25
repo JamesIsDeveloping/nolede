@@ -1,0 +1,8 @@
+[build]
+buildCommand = "npm ci && npx playwright install --with-deps chromium && npm run build -w client && npm run build -w server"
+
+[deploy]
+startCommand = "node server/dist/server.js"
+healthcheckPath = "/api/health"
+healthcheckTimeout = 30
+restartPolicyType = "on_failure"

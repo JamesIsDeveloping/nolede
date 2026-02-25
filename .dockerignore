@@ -1,0 +1,9 @@
+node_modules
+*/node_modules
+server/dist
+client/dist
+.env
+logs/
+.git
+railway.toml
+*.log

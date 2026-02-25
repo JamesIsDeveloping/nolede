@@ -1,0 +1,16 @@
+{
+  "name": "nolede",
+  "version": "0.2.0",
+  "private": true,
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "build": "npm run build -w server && npm run build -w client",
+    "start": "node server/dist/server.js",
+    "dev:server": "npm run dev -w server",
+    "dev:client": "npm run dev -w client",
+    "install:all": "npm install"
+  }
+}
